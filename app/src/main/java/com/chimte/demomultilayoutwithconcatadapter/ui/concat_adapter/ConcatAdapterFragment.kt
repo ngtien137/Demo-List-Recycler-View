@@ -6,6 +6,7 @@ import com.base.baselibrary.adapter.viewholder.ViewHolderBase
 import com.base.baselibrary.views.ext.loge
 import com.chimte.demomultilayoutwithconcatadapter.R
 import com.chimte.demomultilayoutwithconcatadapter.adapter.AdapterGroupItem
+import com.chimte.demomultilayoutwithconcatadapter.adapter.GridHeaderAdapter
 import com.chimte.demomultilayoutwithconcatadapter.databinding.FragmentConcatAdapterBinding
 import com.chimte.demomultilayoutwithconcatadapter.model.FakeData
 import com.chimte.demomultilayoutwithconcatadapter.model.ItemGroupData
@@ -15,6 +16,9 @@ import com.chimte.demomultilayoutwithconcatadapter.utils.AppConst
 class ConcatAdapterFragment : BaseMainFragment<FragmentConcatAdapterBinding>() {
 
     //region properties
+    var list1: List<String> = FakeData.firstItems.value ?: emptyList()
+    var list2: List<String> = FakeData.secondItems.value ?: emptyList()
+    var list3: List<String> = FakeData.thirdsItems.value ?: emptyList()
 
     private val adapter1 by lazy {
         BaseAdapter<String>(R.layout.item_string_linear)
@@ -55,7 +59,8 @@ class ConcatAdapterFragment : BaseMainFragment<FragmentConcatAdapterBinding>() {
             AdapterGroupItem(listItemGroup[1], AppConst.LAYOUT_TYPE_LINEAR_HORIZONTAL),
             AdapterGroupItem(listItemGroup[2], AppConst.LAYOUT_TYPE_GRID_3)
         )
-        binding.adapter = concatAdapter
+        val adapter = GridHeaderAdapter(list1, list2, list3)
+        adapter.attachToRecyclerView(binding.rvList)
     }
 
     override fun initView() {

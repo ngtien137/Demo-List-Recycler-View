@@ -6,19 +6,19 @@ object FakeData {
 
     val firstItems = MutableLiveData(ArrayList<String>().apply {
         for (i in 0..9) {
-            add("Item #${size}")
+            add("ItemA #${size}")
         }
     })
 
     val secondItems = MutableLiveData(ArrayList<String>().apply {
         for (i in 0..9) {
-            add("Item #${size}")
+            add("ItemB #${size}")
         }
     })
 
     val thirdsItems = MutableLiveData(ArrayList<String>().apply {
         for (i in 0..100) {
-            add("Item #${size}")
+            add("ItemC #${size}")
         }
     })
 
